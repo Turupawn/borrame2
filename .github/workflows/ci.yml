@@ -1,6 +1,8 @@
 name: release
 
-on: [push]
+on:
+  release:
+    types: [published]
 
 jobs:
   build:
@@ -9,11 +11,21 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - run: |
-          ls
+          mv shmup.exe ..
       - uses: josephbmanley/butler-publish-itchio-action@master
         env:
           BUTLER_CREDENTIALS: ${{ secrets.BUTLER_API_KEY }}
-          CHANNEL: windows
+          CHANNEL: linux
           ITCH_GAME: test
           ITCH_USER: turupawn
-          PACKAGE: tribilin
+          PACKAGE: .
+      - run: |
+          mv ../shmup.exe .
+          mv Shmup ..
+      - uses: josephbmanley/butler-publish-itchio-action@master
+        env:
+          BUTLER_CREDENTIALS: ${{ secrets.BUTLER_API_KEY }}
+          CHANNEL: linux
+          ITCH_GAME: test
+          ITCH_USER: turupawn
+          PACKAGE: .
