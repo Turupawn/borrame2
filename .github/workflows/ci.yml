@@ -10,19 +10,30 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - run: |
-          mv shmup.exe ..
-      - uses: josephbmanley/butler-publish-itchio-action@master
+      - name: Remove unwanted files
+        run: |
+          rm -rf Other
+          rm -rf img
+          rm -rf .github
+      - name: Prepare linux upload
+        run: |
+          mv *.exe ..
+          mv *.dll ..
+      - name: Upload Linux build
+        uses: josephbmanley/butler-publish-itchio-action@master
         env:
           BUTLER_CREDENTIALS: ${{ secrets.BUTLER_API_KEY }}
           CHANNEL: linux
           ITCH_GAME: test
           ITCH_USER: turupawn
           PACKAGE: .
-      - run: |
-          mv ../shmup.exe .
+      - name: Prepare windows upload
+        run: |
+          mv ../**.exe .
+          mv ../**.dll .
           mv shmup ..
-      - uses: josephbmanley/butler-publish-itchio-action@master
+      - name: Upload Windows build
+        uses: josephbmanley/butler-publish-itchio-action@master
         env:
           BUTLER_CREDENTIALS: ${{ secrets.BUTLER_API_KEY }}
           CHANNEL: windows
