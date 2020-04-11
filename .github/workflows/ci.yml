@@ -21,8 +21,7 @@ jobs:
 
     steps:
       - run: |
-          ls
-          cd
+          cd ${{ matrix.build-src-dir || '.' }}
           ls
       - uses: josephbmanley/butler-publish-itchio-action@master
         env:
