@@ -12,15 +12,10 @@ jobs:
       matrix:
         name:
           - Ubuntu 18.04
-          - Windows 2019 MSVC win64
         include:
           - name: Ubuntu 18.04
             os: ubuntu-18.04
             artifact-name: x86_64-linux-gnu
-
-          - name: Windows 2019 MSVC win64
-            os: windows-2019
-            artifact-name: x86_64-windows-msvc
 
     runs-on: ${{ matrix.os }}
 
