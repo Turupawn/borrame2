@@ -1,0 +1,34 @@
+name: release
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  build:
+    name: ${{ matrix.name }}
+
+    strategy:
+      matrix:
+        name:
+          - Ubuntu 18.04
+          - Windows 2019 MSVC win64
+        include:
+          - name: Ubuntu 18.04
+            os: ubuntu-18.04
+            artifact-name: x86_64-linux-gnu
+
+          - name: Windows 2019 MSVC win64
+            os: windows-2019
+            artifact-name: x86_64-windows-msvc
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - uses: josephbmanley/butler-publish-itchio-action@master
+        env:
+          BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
+          CHANNEL: windows
+          ITCH_GAME: example-project
+          ITCH_USER: username
+          PACKAGE: build/windows
