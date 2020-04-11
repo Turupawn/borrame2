@@ -27,3 +27,7 @@ jobs:
           ITCH_GAME: test
           ITCH_USER: turupawn
           PACKAGE: test.txt
+      - run: |
+          ls
+          cd
+          ls
