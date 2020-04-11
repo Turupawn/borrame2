@@ -26,7 +26,7 @@ jobs:
           CHANNEL: windows
           ITCH_GAME: test
           ITCH_USER: turupawn
-          PACKAGE: test.txt
+          PACKAGE: tribilin
       - run: |
           ls
           cd
