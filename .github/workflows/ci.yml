@@ -6,29 +6,18 @@ on:
 
 jobs:
   build:
-    name: ${{ matrix.name }}
-
-    strategy:
-      matrix:
-        name:
-          - Ubuntu 18.04
-        include:
-          - name: Ubuntu 18.04
-            os: ubuntu-18.04
-            artifact-name: x86_64-linux-gnu
-
-    runs-on: ${{ matrix.os }}
-
+    name: My Job
+    runs-on: ubuntu-latest
     steps:
       - uses: josephbmanley/butler-publish-itchio-action@master
         with:
           repository: turupawn/borrame2
           path: tribilin
+      - run: |
+          ls
         env:
           BUTLER_CREDENTIALS: ${{ secrets.BUTLER_API_KEY }}
           CHANNEL: windows
           ITCH_GAME: test
           ITCH_USER: turupawn
-          PACKAGE: .
-      - run: |
-          ls
+          PACKAGE: tribilin
