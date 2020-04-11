@@ -1,11 +1,11 @@
-name: release
+name: Itch.io release
 
 on:
   release:
     types: [published]
 
 jobs:
-  build:
+  upload:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -15,7 +15,7 @@ jobs:
           rm -rf Other
           rm -rf img
           rm -rf .github
-      - name: Prepare linux upload
+      - name: Prepare Linux upload
         run: |
           mv *.exe ..
           mv *.dll ..
@@ -27,7 +27,7 @@ jobs:
           ITCH_GAME: test
           ITCH_USER: turupawn
           PACKAGE: .
-      - name: Prepare windows upload
+      - name: Prepare Windows upload
         run: |
           mv ../**.exe .
           mv ../**.dll .
