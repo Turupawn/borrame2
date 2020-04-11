@@ -25,7 +25,7 @@ jobs:
       - uses: josephbmanley/butler-publish-itchio-action@master
         env:
           BUTLER_CREDENTIALS: ${{ secrets.BUTLER_API_KEY }}
-          CHANNEL: linux
+          CHANNEL: windows
           ITCH_GAME: test
           ITCH_USER: turupawn
           PACKAGE: .
