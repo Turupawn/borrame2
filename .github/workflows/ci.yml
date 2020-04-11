@@ -15,7 +15,7 @@ jobs:
           path: tribilin
       - run: |
           ls
-        env:
+      - env:
           BUTLER_CREDENTIALS: ${{ secrets.BUTLER_API_KEY }}
           CHANNEL: windows
           ITCH_GAME: test
