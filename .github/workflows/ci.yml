@@ -13,11 +13,9 @@ jobs:
         with:
           repository: turupawn/borrame2
           path: tribilin
-      - run: |
-          ls
-      - env:
+        env:
           BUTLER_CREDENTIALS: ${{ secrets.BUTLER_API_KEY }}
           CHANNEL: windows
           ITCH_GAME: test
           ITCH_USER: turupawn
-          PACKAGE: tribilin
+          PACKAGE: .
