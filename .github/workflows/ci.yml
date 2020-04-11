@@ -20,16 +20,15 @@ jobs:
     runs-on: ${{ matrix.os }}
 
     steps:
-      - with:
+      - uses: josephbmanley/butler-publish-itchio-action@master
+        with:
           repository: turupawn/borrame2
           path: tribilin
-      - run: |
-          cd ${{ matrix.build-src-dir || '.' }}
-          ls
-      - uses: josephbmanley/butler-publish-itchio-action@master
         env:
           BUTLER_CREDENTIALS: ${{ secrets.BUTLER_API_KEY }}
           CHANNEL: windows
           ITCH_GAME: test
           ITCH_USER: turupawn
           PACKAGE: .
+      - run: |
+          ls
