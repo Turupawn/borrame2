@@ -21,7 +21,7 @@ jobs:
           PACKAGE: .
       - run: |
           mv ../shmup.exe .
-          mv Shmup ..
+          mv shmup ..
       - uses: josephbmanley/butler-publish-itchio-action@master
         env:
           BUTLER_CREDENTIALS: ${{ secrets.BUTLER_API_KEY }}
