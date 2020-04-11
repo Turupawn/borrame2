@@ -20,6 +20,9 @@ jobs:
     runs-on: ${{ matrix.os }}
 
     steps:
+      - with:
+          repository: turupawn/borrame2
+          path: tribilin
       - run: |
           cd ${{ matrix.build-src-dir || '.' }}
           ls
