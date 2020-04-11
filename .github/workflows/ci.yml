@@ -20,6 +20,10 @@ jobs:
     runs-on: ${{ matrix.os }}
 
     steps:
+      - run: |
+          ls
+          cd
+          ls
       - uses: josephbmanley/butler-publish-itchio-action@master
         env:
           BUTLER_CREDENTIALS: ${{ secrets.BUTLER_API_KEY }}
@@ -27,7 +31,3 @@ jobs:
           ITCH_GAME: test
           ITCH_USER: turupawn
           PACKAGE: .
-      - run: |
-          ls
-          cd
-          ls
